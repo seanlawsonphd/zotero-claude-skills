@@ -33,6 +33,8 @@ What to read in `zotero-debug.log`:
 - `Plugin <id> is missing bootstrap method 'x'`: harmless unless you expected the hook.
 - Nothing mentioning the id at all: the add-on manager rejected the manifest; run `scripts/check-manifest.py`.
 
+Driving Zotero's Run JavaScript window with automation: its code box is a code editor that auto-indents and auto-closes brackets and quotes, so typing a multi-line script produces stray `}` and a SyntaxError, and background GUI tools cannot type into it at all (no accessibility tree). What works: select-all, delete, then type one line, `eval(atob("<base64 of the script>"))`, and click Run; the result pane shows the value of the script's last expression. Use `return` only with "Run as async function" ticked.
+
 Driving the test instance with GUI automation: both Zoteros share bundle id `org.zotero.zotero`, so tools that address an app by bundle id reach only the first process. Screen-coordinate clicks work; so does simply asking the user to try it in their own Zotero once the manifest check passes.
 
 ## Reading the user's failure dialogs

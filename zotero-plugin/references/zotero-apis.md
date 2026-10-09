@@ -42,6 +42,14 @@ Zotero 7.0 fallback: `doc.createXULElement('menuitem')` with `data-l10n-id`, app
 - Clipboard: `Components.classes["@mozilla.org/widget/clipboardhelper;1"].getService(Components.interfaces.nsIClipboardHelper).copyString(text)`.
 - Async: `Zotero.Promise.delay(ms)`, `Zotero.initializationPromise`, `Zotero.uiReadyPromise`.
 
+## Working with saved snapshots
+
+A snapshot is SingleFile HTML (one file, images inlined as data URIs). Read it with `attachment.getFilePathAsync()` + `Zotero.File.getContentsAsync(path)`, parse with `new DOMParser().parseFromString(html, 'text/html')`, and insert a `<base href>` with the attachment's URL before resolving links. Pages saved while a sign-in or subscribe dialog was open (Substack, for one) mark the real content `aria-hidden="true"`; strip that attribute before running Readability-style extraction or the article text is skipped. Save generated HTML as a new attachment with `Zotero.Attachments.importFromSnapshotContent({ url, snapshotContent, title, parentItemID })`.
+
+## Other plugins' APIs worth knowing
+
+- **Better Notes** (`Zotero.BetterNotes.api`): note templates are stored per profile in prefs `extensions.zotero.Knowledge4Zotero.template.<name>` as a JSON-encoded string (decode twice when reading prefs.js); `api.template.getTemplateText(name)`, `api.template.setTemplate({ name, text })`, `api.template.runTextTemplate(name, { targetNoteId, dryRun })`. Share files for Tools > New Template from Clipboard are YAML with `name:` and a `content: |-` block.
+
 ## Connector HTTP server (useful for tests, port 23119 by default)
 
 - `GET /connector/ping`; `POST /connector/getTranslators {url}`; `POST /connector/import?session=<id>` with RIS/BibTeX text creates items; `POST /connector/saveItems`. Change the port per profile with `extensions.zotero.httpServer.port`.
