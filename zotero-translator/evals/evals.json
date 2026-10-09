@@ -1,0 +1,23 @@
+{
+  "skill_name": "zotero-translator",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "The Zotero Connector only saves a generic 'Web Page' when I'm on Al-Monitor articles like https://www.al-monitor.com/originals/2026/10/example-story. Build me a proper Zotero translator for al-monitor.com that gets the headline, author, date, section and tags, with the article saved as a newspaper article, test it against the live site, and install it into my Zotero.",
+      "expected_output": "A lint-clean translator file (Al-Monitor.js or similar) built with the zotero/translators .bin tooling: site analyzed first, EM-based scrape with byline/date/section fixes, getSearchResults for listing pages, captured test cases including a multiple, all tests passing in run-tests, installed into the Zotero data directory translators folder with a kept copy, and clear restart/Update Translators instructions.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "can you make a custom zotero connector for tass.ru (the Russian-language TASS site, e.g. https://tass.ru/politika/26123456)? I already have one for tass.com in ~/Zotero Connectors/TASS.com.js, maybe reuse what you can. Make sure saving from a section page like https://tass.ru/politika gives me a list to pick from, and that the list isn't full of junk links.",
+      "expected_output": "A separate translator for tass.ru (different template from tass.com, so analyzed independently), reusing helper patterns from TASS.com.js where valid; detection of article pages and a verified pick-list for section pages that excludes navigation/menu links; tests captured and passing; installed with instructions.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "My RT.com translator in ~/Zotero Connectors/RT.com.js has started failing its tests, and the Zotero connector now shows the wrong author on RT op-eds (it says 'Russia Today' instead of the person). Figure out what changed on the site, fix the translator, re-run the test suite, and reinstall it.",
+      "expected_output": "Diagnosis of the live page markup versus the translator's selectors, a targeted fix to byline parsing, stale test cases refreshed with drop-test-case + create-test rather than hand-edited, lastUpdated bumped, lint and run-tests passing, the file reinstalled into the data directory without overwriting other translators, and restart/Update Translators instructions.",
+      "files": []
+    }
+  ]
+}

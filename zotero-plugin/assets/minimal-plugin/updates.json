@@ -1,0 +1,19 @@
+{
+	"addons": {
+		"{{PLUGIN_ID}}": {
+			"updates": [
+				{
+					"version": "1.0.0",
+					"update_link": "{{REPO_URL}}/releases/download/v1.0.0/{{PLUGIN_SLUG}}-1.0.0.xpi",
+					"update_hash": "sha256:REPLACE_WITH_HASH_FROM_BUILD_SH",
+					"applications": {
+						"zotero": {
+							"strict_min_version": "7.0",
+							"strict_max_version": "{{MAX_VERSION}}"
+						}
+					}
+				}
+			]
+		}
+	}
+}

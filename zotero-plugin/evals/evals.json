@@ -1,0 +1,23 @@
+{
+  "skill_name": "zotero-plugin",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I keep needing the DOIs of a bunch of selected Zotero items as a plain list. Can we make a small Zotero plugin that adds a right-click menu item 'Copy DOIs' which copies the DOIs of the selected items (one per line) to the clipboard and shows a little popup saying how many it copied? Build it as an installable XPI I can try.",
+      "expected_output": "A minimal bootstrap plugin (manifest with id/update_url/strict_max_version, bootstrap.js, main object, FTL label) registering an item context-menu command via Zotero.MenuManager with a 7.0 fallback, reading DOIs from context.items (DOI field, with the Extra-field fallback), writing to the clipboard, reporting via ProgressWindow; built into an XPI that passes check-manifest; clear install instructions (Tools > Plugins > Install Plugin From File).",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Set up a new Zotero plugin project for me using the windingwind zotero-plugin-template. It should be called 'Reading Queue', add a preference pane with a toggle 'Show queue column', and add an extra column in the item tree showing a 'queued' flag I can store per item. Use my GitHub account (seanlawsonphd) and get it to the point where npm start works.",
+      "expected_output": "Repo created from the template via gh, package.json config block filled (addonName/addonID/addonRef/addonInstance/prefsPrefix), .env configured for the local Zotero binary and a dev profile, strict_max_version raised to the installed Zotero version, a prefs.js entry and preferences.xhtml toggle, an ItemTreeManager column registered in hooks via a module, FTL strings added, and npm start launching Zotero with hot reload.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "my zotero plugin won't install. Tools > Plugins > Install Plugin From File gives 'The add-on could not be installed. It may be incompatible with this version of Zotero.' The source is in ~/code/zotero-note-stamper (manifest.json, bootstrap.js, stamper.js). I'm on Zotero 10. Fix it, then publish v1.0.0 on my GitHub so others can install it and get updates.",
+      "expected_output": "Diagnosis via the required manifest fields (missing strict_max_version or update_url or id), corrected manifest, XPI rebuilt and validated with check-manifest, a test in a throwaway profile or clear user-test instructions, then git repo + GitHub release with the XPI attached and an updates.json whose sha256 matches the released asset, verified by downloading it back.",
+      "files": []
+    }
+  ]
+}

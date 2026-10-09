@@ -1,0 +1,16 @@
+{
+	"manifest_version": 2,
+	"name": "{{PLUGIN_NAME}}",
+	"version": "1.0.0",
+	"description": "{{DESCRIPTION}}",
+	"author": "{{AUTHOR}}",
+	"homepage_url": "{{REPO_URL}}",
+	"applications": {
+		"zotero": {
+			"id": "{{PLUGIN_ID}}",
+			"update_url": "{{RAW_REPO_URL}}/main/updates.json",
+			"strict_min_version": "7.0",
+			"strict_max_version": "{{MAX_VERSION}}"
+		}
+	}
+}
